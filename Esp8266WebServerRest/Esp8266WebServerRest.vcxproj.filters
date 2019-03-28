@@ -21,5 +21,8 @@
     <ClInclude Include="__vm\.Esp8266WebServerRest.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="index.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

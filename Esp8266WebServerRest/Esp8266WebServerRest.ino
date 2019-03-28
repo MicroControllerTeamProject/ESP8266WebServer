@@ -4,6 +4,8 @@
 
 #include <ArduinoJson.h>
 
+#include "index.h"
+
 #define HTTP_REST_PORT 12859
 
 #define WIFI_RETRY_DELAY 500
@@ -193,20 +195,18 @@ void config_rest_server_routing() {
 
 	http_rest_server.on("/1", HTTP_GET, []() {
 
-		http_rest_server.send(200, "text/html",
+		String s = MAIN_page; //Read HTML contents
 
-			"Procedura 1 avviata");
-
+		http_rest_server.send(200, "text/html", s);
 		Serial.write("Dati da inviare al microcontrollore");
-
-		for (int i = 0; i < 5; i++)
-		{
-			Serial.println("Apro il portone");
+		//for (int i = 0; i < 5; i++)
+		//{
+			//Serial.println("Apro il portone");
 			digitalWrite(2, HIGH);
 			delay(1000);
 			digitalWrite(2, LOW);
-			delay(30000);
-		}
+			delay(1000);
+		//}
 	});
 
 	http_rest_server.on("/2", HTTP_GET, []() {
