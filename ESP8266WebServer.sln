@@ -7,20 +7,36 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Esp8266WebServerRest", "Esp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MicrocontrollerComunication", "MicrocontrollerComunication\MicrocontrollerComunication.vcxproj", "{03F50D36-FAA9-4A5F-809F-7CF7EF0B66B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeControllerSite", "HomeControllerSite\HomeControllerSite.csproj", "{A52FD585-87F1-472F-9595-1E6137E55717}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.ActiveCfg = Debug|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.Build.0 = Debug|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|Any CPU.ActiveCfg = Release|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.ActiveCfg = Release|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.Build.0 = Release|Win32
+		{03F50D36-FAA9-4A5F-809F-7CF7EF0B66B5}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{03F50D36-FAA9-4A5F-809F-7CF7EF0B66B5}.Debug|x86.ActiveCfg = Debug|Win32
 		{03F50D36-FAA9-4A5F-809F-7CF7EF0B66B5}.Debug|x86.Build.0 = Debug|Win32
+		{03F50D36-FAA9-4A5F-809F-7CF7EF0B66B5}.Release|Any CPU.ActiveCfg = Release|Win32
 		{03F50D36-FAA9-4A5F-809F-7CF7EF0B66B5}.Release|x86.ActiveCfg = Release|Win32
 		{03F50D36-FAA9-4A5F-809F-7CF7EF0B66B5}.Release|x86.Build.0 = Release|Win32
+		{A52FD585-87F1-472F-9595-1E6137E55717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A52FD585-87F1-472F-9595-1E6137E55717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A52FD585-87F1-472F-9595-1E6137E55717}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A52FD585-87F1-472F-9595-1E6137E55717}.Debug|x86.Build.0 = Debug|Any CPU
+		{A52FD585-87F1-472F-9595-1E6137E55717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A52FD585-87F1-472F-9595-1E6137E55717}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A52FD585-87F1-472F-9595-1E6137E55717}.Release|x86.ActiveCfg = Release|Any CPU
+		{A52FD585-87F1-472F-9595-1E6137E55717}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
