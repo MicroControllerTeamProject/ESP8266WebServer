@@ -12,9 +12,9 @@
 
 #define MAX_WIFI_INIT_RETRY 50
 
-const char* wifi_ssid = "Vodafone-34419531_2GEXT";
+const char* wifi_ssid = "HUAWEI Mate s_2GEXT";
 
-const char* wifi_passwd = "P83ssw0rd";
+const char* wifi_passwd = "neuroma9000";
 
 struct Led {
 
