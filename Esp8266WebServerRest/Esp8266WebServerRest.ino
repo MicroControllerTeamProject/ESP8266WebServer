@@ -11,6 +11,8 @@
 #define WIFI_RETRY_DELAY 500
 
 #define MAX_WIFI_INIT_RETRY 50
+//
+//IPAddress ip(192, 168, 43, 9);
 
 const char* wifi_ssid = "HUAWEI Mate s_2GEXT";
 
