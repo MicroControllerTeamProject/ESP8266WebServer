@@ -18,9 +18,9 @@ namespace WcfServiceBase
         Person GetData();
 
         [OperationContract]
-        [WebInvoke(Method = "POST",ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "GetDataC")]
+        [WebInvoke(Method = "POST",ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "GetDataC")]
         //CompositeType GetDataUsingDataContract(CompositeType composite);
-        String  GetDataUsingDataContract(string a);
+        void GetDataUsingDataContract(Person a);
 
         // TODO: Add your service operations here
     }

@@ -12,9 +12,9 @@ namespace WcfServiceBase
             return new Person() { name = "luigi", username = "hp9000", email = "tin@it" };
         }
 
-        public string  GetDataUsingDataContract(string a)
+        public   void GetDataUsingDataContract(Person a)
         {
-            return "Ciao Mondo2";
+            
         }
     }
 }

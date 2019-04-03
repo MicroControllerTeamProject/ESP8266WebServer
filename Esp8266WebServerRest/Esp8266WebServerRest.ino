@@ -37,8 +37,6 @@ struct Led {
 
 } led_resource;
 
-
-
 ESP8266WebServer http_rest_server(HTTP_REST_PORT);
 
 void init_led_resource()
@@ -283,40 +281,55 @@ void setup(void) {
 
 void loop(void) {
 
-	//Parte che chiama un servizio rest service
 
-	HTTPClient http; //Object of class HTTPClient
-	//http.begin("http://jsonplaceholder.typicode.com/users/1");
-	
-	http.begin("http://192.168.43.197:901/WcfServiceEsp8266/WcfServiceBase.svc/GetData");
 
-	delay(2000);
-	int httpCode = http.GET();
+	HTTPClient http;    //Declare object of class HTTPClient
+	http.begin("http://192.168.43.197:901/WcfServiceEsp8266/WcfServiceBase.svc/GetDataC");      //Specify request destination
+	http.addHeader("Content-Type" , "application/json");  //Specify content-type header
+	int httpCode = http.POST("{\"email\" : \"tin@it\",\"name\" : \"luigis\",\"username\" : \"hp9000\"}");   //Send the request
+	String payload = http.getString();                  //Get the response payload
+	Serial.println(httpCode);   //Print HTTP return code
+	Serial.println(payload);    //Print request response payload
+	http.end();  //Close connection
 
-	Serial.println("Client : "); Serial.println(httpCode);
 
-	if (httpCode > 0)
-	{
-		const size_t bufferSize = JSON_ARRAY_SIZE(2) + JSON_OBJECT_SIZE(2);// +JSON_OBJECT_SIZE(5) + JSON_OBJECT_SIZE(8) + 370;
-		DynamicJsonBuffer jsonBuffer(bufferSize);
-		JsonObject& root = jsonBuffer.parseObject(http.getString());
 
-		int id = root["id"];
-		const char* name = root["name"];
-		const char* username = root["username"];
-		const char* email = root["email"];
 
-		Serial.print("Name:");
-		Serial.println(name);
-		Serial.print("Username:");
-		Serial.println(username);
-		Serial.print("Email:");
-		Serial.println(email);
-	}
-	http.end(); //Close connection
+	////Parte che chiama un servizio rest service
+
+	//HTTPClient http; //Object of class HTTPClient
+	////http.begin("http://jsonplaceholder.typicode.com/users/1");
+	//
+	//http.begin("http://192.168.43.197:901/WcfServiceEsp8266/WcfServiceBase.svc/GetData");
+
+	////delay(2000);
+
+	//int httpCode = http.GET();
+
+	////Serial.println("Client : "); Serial.println(httpCode);
+
+	//if (httpCode > 0)
+	//{
+	//	const size_t bufferSize = JSON_ARRAY_SIZE(2) + JSON_OBJECT_SIZE(2);// +JSON_OBJECT_SIZE(5) + JSON_OBJECT_SIZE(8) + 370;
+	//	DynamicJsonBuffer jsonBuffer(bufferSize);
+	//	JsonObject& root = jsonBuffer.parseObject(http.getString());
+
+	//	int id = root["id"];
+	//	const char* name = root["name"];
+	//	const char* username = root["username"];
+	//	const char* email = root["email"];
+
+	//	Serial.print("Name:");
+	//	Serial.println(name);
+	//	Serial.print("Username:");
+	//	Serial.println(username);
+	//	Serial.print("Email:");
+	//	Serial.println(email);
+	//}
+	//http.end(); //Close connection
+
 
 	delay(10000);
-
 
 	http_rest_server.handleClient();
 }
