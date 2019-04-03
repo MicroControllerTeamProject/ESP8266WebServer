@@ -1,3 +1,4 @@
+#include <ESP8266HTTPClient.h>
 #include <stdio.h>
 
 #include <ESP8266WiFi.h>          //ESP8266 Core WiFi Library (you most likely already have this in your sketch)
@@ -24,7 +25,7 @@ WiFiManager wifiManager;
 //
 //const char* wifi_ssid = "HUAWEI Mate s_2GEXT";
 //
-//const char* wifi_passwd = "neuroma9000";
+//const char* wifi_passwd = "xxxxxxxxxxx";
 
 struct Led {
 
@@ -281,8 +282,42 @@ void setup(void) {
 }
 
 void loop(void) {
-	//Serial.print("Start1");
-	http_rest_server.handleClient();
 
+	//Parte che chiama un servizio rest service
+
+	HTTPClient http; //Object of class HTTPClient
+	//http.begin("http://jsonplaceholder.typicode.com/users/1");
+	
+	http.begin("http://192.168.43.197:901/WcfServiceEsp8266/WcfServiceBase.svc/GetData");
+
+	delay(2000);
+	int httpCode = http.GET();
+
+	Serial.println("Client : "); Serial.println(httpCode);
+
+	if (httpCode > 0)
+	{
+		const size_t bufferSize = JSON_ARRAY_SIZE(2) + JSON_OBJECT_SIZE(2);// +JSON_OBJECT_SIZE(5) + JSON_OBJECT_SIZE(8) + 370;
+		DynamicJsonBuffer jsonBuffer(bufferSize);
+		JsonObject& root = jsonBuffer.parseObject(http.getString());
+
+		int id = root["id"];
+		const char* name = root["name"];
+		const char* username = root["username"];
+		const char* email = root["email"];
+
+		Serial.print("Name:");
+		Serial.println(name);
+		Serial.print("Username:");
+		Serial.println(username);
+		Serial.print("Email:");
+		Serial.println(email);
+	}
+	http.end(); //Close connection
+
+	delay(10000);
+
+
+	http_rest_server.handleClient();
 }
 
