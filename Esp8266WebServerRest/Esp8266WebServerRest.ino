@@ -1,6 +1,12 @@
 #include <stdio.h>
 
+#include <ESP8266WiFi.h>          //ESP8266 Core WiFi Library (you most likely already have this in your sketch)
+
+#include <DNSServer.h>            //Local DNS Server used for redirecting all requests to the configuration portal
+
 #include <ESP8266WebServer.h>
+
+#include <WiFiManager.h>          //https://github.com/tzapu/WiFiManager WiFi Configuration Magic      
 
 #include <ArduinoJson.h>
 
@@ -11,12 +17,14 @@
 #define WIFI_RETRY_DELAY 500
 
 #define MAX_WIFI_INIT_RETRY 50
+
+WiFiManager wifiManager;
+
+
 //
-//IPAddress ip(192, 168, 43, 9);
-
-const char* wifi_ssid = "HUAWEI Mate s_2GEXT";
-
-const char* wifi_passwd = "neuroma9000";
+//const char* wifi_ssid = "HUAWEI Mate s_2GEXT";
+//
+//const char* wifi_passwd = "neuroma9000";
 
 struct Led {
 
@@ -47,25 +55,29 @@ void init_led_resource()
 int init_wifi() {
 	int retries = 0;
 
-	Serial.println("Connecting to WiFi AP..........");
+	//Serial.println("Connecting to WiFi AP..........");
 
-	WiFi.mode(WIFI_STA);
+	wifiManager.autoConnect("LGS-HOMECONTROLLER", "password");
 
-	WiFi.begin(wifi_ssid, wifi_passwd);
+	//WiFi.mode(WIFI_STA);
 
-	// check the status of WiFi connection to be WL_CONNECTED
+	//
 
-	while ((WiFi.status() != WL_CONNECTED) && (retries < MAX_WIFI_INIT_RETRY)) {
+	////WiFi.begin(wifi_ssid, wifi_passwd);
 
-		retries++;
+	//// check the status of WiFi connection to be WL_CONNECTED
 
-		delay(WIFI_RETRY_DELAY);
+	//while ((WiFi.status() != WL_CONNECTED) && (retries < MAX_WIFI_INIT_RETRY)) {
 
-		Serial.print("#");
+	//	retries++;
 
-	}
+	//	delay(WIFI_RETRY_DELAY);
 
-	return WiFi.status(); // return the WiFi connection status
+	//	Serial.print("#");
+
+	//}
+
+	//return WiFi.status(); // return the WiFi connection status
 
 }
 
@@ -243,7 +255,7 @@ void setup(void) {
 
 		Serial.print("Connetted to ");
 
-		Serial.print(wifi_ssid);
+		//Serial.print(wifi_ssid);
 
 		Serial.print("--- IP: ");
 
@@ -255,7 +267,7 @@ void setup(void) {
 
 		Serial.print("Error connecting to: ");
 
-		Serial.println(wifi_ssid);
+		//Serial.println(wifi_ssid);
 
 	}
 
