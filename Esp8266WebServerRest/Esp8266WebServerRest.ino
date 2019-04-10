@@ -280,9 +280,6 @@ void setup(void) {
 }
 
 void loop(void) {
-
-
-
 	HTTPClient http;    //Declare object of class HTTPClient
 	http.begin("http://192.168.43.197:901/WcfServiceEsp8266/WcfServiceBase.svc/GetDataC");      //Specify request destination
 	http.addHeader("Content-Type" , "application/json");  //Specify content-type header

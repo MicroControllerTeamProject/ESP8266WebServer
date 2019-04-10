@@ -12,14 +12,12 @@ namespace WcfServiceBase
     [ServiceContract]
     public interface IService1
     {
-
         [OperationContract]
-        [WebInvoke(Method = "GET",ResponseFormat = WebMessageFormat.Json,BodyStyle = WebMessageBodyStyle.Bare,UriTemplate = "GetData")]
+        [WebInvoke(Method = "GET",ResponseFormat = WebMessageFormat.Json,BodyStyle = WebMessageBodyStyle.Wrapped,UriTemplate = "GetData")]
         Person GetData();
 
         [OperationContract]
         [WebInvoke(Method = "POST",ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "GetDataC")]
-        //CompositeType GetDataUsingDataContract(CompositeType composite);
         void GetDataUsingDataContract(Person a);
 
         // TODO: Add your service operations here
