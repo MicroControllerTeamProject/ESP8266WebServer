@@ -1,3 +1,5 @@
+#define FIXERASECONFIG
+
 #include <ESP8266HTTPClient.h>
 #include <stdio.h>
 
@@ -12,6 +14,9 @@
 #include <ArduinoJson.h>
 
 #include "index.h"
+
+#include "index2.h"
+
 
 #define HTTP_REST_PORT 12859
 
@@ -52,31 +57,8 @@ void init_led_resource()
 }
 
 int init_wifi() {
-	int retries = 0;
-
-	//Serial.println("Connecting to WiFi AP..........");
-
+	WiFi.hostname("LsgOpener");
 	wifiManager.autoConnect("LGS-HOMECONTROLLER", "password");
-
-	//WiFi.mode(WIFI_STA);
-
-	//
-
-	////WiFi.begin(wifi_ssid, wifi_passwd);
-
-	//// check the status of WiFi connection to be WL_CONNECTED
-
-	//while ((WiFi.status() != WL_CONNECTED) && (retries < MAX_WIFI_INIT_RETRY)) {
-
-	//	retries++;
-
-	//	delay(WIFI_RETRY_DELAY);
-
-	//	Serial.print("#");
-
-	//}
-
-	//return WiFi.status(); // return the WiFi connection status
 
 }
 
@@ -204,33 +186,60 @@ void post_put_leds() {
 
 }
 
+void resetwifi() {
+	http_rest_server.send(200, "text/html", "System reset");
+
+	delay(5000);
+
+	wifiManager.resetSettings();
+}
+
 void config_rest_server_routing() {
 
-	http_rest_server.on("/1", HTTP_GET, []() {
+	http_rest_server.on("/menu", HTTP_GET, []() {
 
-		String s = MAIN_page; //Read HTML contents
+		String s = MAIN_page2; //Read HTML contents
 
 		http_rest_server.send(200, "text/html", s);
-		Serial.write("Dati da inviare al microcontrollore");
+		//Serial.write("Dati da inviare al microcontrollore");
 		//for (int i = 0; i < 5; i++)
 		//{
 			//Serial.println("Apro il portone");
-			digitalWrite(2, HIGH);
+		/*	digitalWrite(2, HIGH);
 			delay(1000);
 			digitalWrite(2, LOW);
-			delay(1000);
+			delay(1000);*/
 		//}
 	});
 
-	http_rest_server.on("/2", HTTP_GET, []() {
+	
+
+	http_rest_server.on("/reset", HTTP_GET, []() {
+
+		resetwifi();
+
+		return;
 
 		http_rest_server.send(200, "text/html",
+			"host resetted");
 
-			"Procedura 2 avviata");
+		
 
-		Serial.write("Dati da inviare al microcontrollore 2");
+		delay(5000);
 
-		//digitalWrite(2, LOW);
+		WiFi.hostname("LsgOpener");
+		//////Serial.println("Connecting to WiFi AP..........");
+		wifiManager.resetSettings();
+		ESP.reset();
+
+	
+		wifiManager.autoConnect("LGS-HOMECONTROLLER", "password");
+
+		config_rest_server_routing();
+
+		http_rest_server.begin();
+
+
 
 	});
 
@@ -244,9 +253,12 @@ void config_rest_server_routing() {
 
 void setup(void) {
 
-	Serial.begin(115200);
+	Serial.begin(9600);
+
+
 
 	Serial.print("Start");
+
 
 	init_led_resource();
 
