@@ -68,7 +68,7 @@
 
             onNodeSelected: function (event, data) {
                 nodeToSelected = data.text;
-                //alert(nodeToSelected);
+                //alert(data['nodeId']);
                 expandibleNodes = findExpandibleNodess();
 
                 $('.expand-node').prop('disabled', !(expandibleNodes.length >= 1));

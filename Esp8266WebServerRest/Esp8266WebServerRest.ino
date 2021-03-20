@@ -18,7 +18,7 @@
 #include "index2.h"
 
 
-#define HTTP_REST_PORT 12859
+#define HTTP_REST_PORT 80
 
 #define WIFI_RETRY_DELAY 500
 
@@ -196,12 +196,17 @@ void resetwifi() {
 
 void config_rest_server_routing() {
 
+	Serial.println("entrato");
+	
 	http_rest_server.on("/menu", HTTP_GET, []() {
+
+		Serial.println("entrato");
 
 		String s = MAIN_page2; //Read HTML contents
 
 		http_rest_server.send(200, "text/html", s);
-		//Serial.write("Dati da inviare al microcontrollore");
+
+		Serial.write("Dati da inviare al microcontrollore");
 		//for (int i = 0; i < 5; i++)
 		//{
 			//Serial.println("Apro il portone");
@@ -211,8 +216,6 @@ void config_rest_server_routing() {
 			delay(1000);*/
 		//}
 	});
-
-	
 
 	http_rest_server.on("/reset", HTTP_GET, []() {
 
@@ -281,7 +284,7 @@ void setup(void) {
 		//Serial.println(wifi_ssid);
 
 	}
-
+	
 	config_rest_server_routing();
 
 	http_rest_server.begin();
@@ -292,14 +295,14 @@ void setup(void) {
 }
 
 void loop(void) {
-	HTTPClient http;    //Declare object of class HTTPClient
-	http.begin("http://192.168.43.197:901/WcfServiceEsp8266/WcfServiceBase.svc/GetDataC");      //Specify request destination
-	http.addHeader("Content-Type" , "application/json");  //Specify content-type header
-	int httpCode = http.POST("{\"email\" : \"tin@it\",\"name\" : \"luigis\",\"username\" : \"hp9000\"}");   //Send the request
-	String payload = http.getString();                  //Get the response payload
-	Serial.println(httpCode);   //Print HTTP return code
-	Serial.println(payload);    //Print request response payload
-	http.end();  //Close connection
+	//HTTPClient http;    //Declare object of class HTTPClient
+	//http.begin("http://192.168.0.182:901/WcfServiceEsp8266/WcfServiceBase.svc/GetDataC");      //Specify request destination
+	//http.addHeader("Content-Type" , "application/json");  //Specify content-type header
+	//int httpCode = http.POST("{\"email\" : \"tin@it\",\"name\" : \"luigis\",\"username\" : \"hp9000\"}");   //Send the request
+	//String payload = http.getString();                  //Get the response payload
+	//Serial.println(httpCode);   //Print HTTP return code
+	//Serial.println(payload);    //Print request response payload
+	//http.end();  //Close connection
 
 
 
@@ -309,7 +312,7 @@ void loop(void) {
 	//HTTPClient http; //Object of class HTTPClient
 	////http.begin("http://jsonplaceholder.typicode.com/users/1");
 	//
-	//http.begin("http://192.168.43.197:901/WcfServiceEsp8266/WcfServiceBase.svc/GetData");
+	//http.begin("http://192.168.0.182:901/WcfServiceEsp8266/WcfServiceBase.svc/GetData");
 
 	////delay(2000);
 
@@ -338,7 +341,7 @@ void loop(void) {
 	//http.end(); //Close connection
 
 
-	delay(10000);
+	//delay(10000);
 
 	http_rest_server.handleClient();
 }

@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeControllerSite", "HomeC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceBase", "WcfServiceBase\WcfServiceBase.csproj", "{47472D39-1E64-49EE-93D9-85CD097B184D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "eagle", "eagle", "{1EFB98ED-7196-49A8-B566-77D8E0F15F61}"
+	ProjectSection(SolutionItems) = preProject
+		eagle\Esp8266Wifi-GatesOpener3.brd = eagle\Esp8266Wifi-GatesOpener3.brd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

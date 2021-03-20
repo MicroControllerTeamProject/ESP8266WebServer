@@ -10,7 +10,7 @@ const char MAIN_page2[] PROGMEM = R"=====(
 </body>
 </html>
 <script language="javascript">
-   var link = "http://" + window.location.hostname + ":12859/reset";
+   var link = "http://" + window.location.hostname + ":80/reset";
     var a = document.createElement('a');
     var linkText = document.createTextNode("Reset system");
     a.appendChild(linkText);
