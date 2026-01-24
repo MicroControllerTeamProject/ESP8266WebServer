@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2000
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36623.8 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Esp8266WebServerRest", "Esp8266WebServerRest\Esp8266WebServerRest.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
 EndProject
@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "eagle", "eagle", "{1EFB98ED
 	ProjectSection(SolutionItems) = preProject
 		eagle\Esp8266Wifi-GatesOpener3.brd = eagle\Esp8266Wifi-GatesOpener3.brd
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Esp8266_Receiver_Vosk_Commands", "Esp8266_Receiver_Vosk_Commands\Esp8266_Receiver_Vosk_Commands.vcxproj", "{2F9DEE8C-C04E-465B-97DB-0AB9B0539447}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +54,18 @@ Global
 		{47472D39-1E64-49EE-93D9-85CD097B184D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{47472D39-1E64-49EE-93D9-85CD097B184D}.Release|x86.ActiveCfg = Release|Any CPU
 		{47472D39-1E64-49EE-93D9-85CD097B184D}.Release|x86.Build.0 = Release|Any CPU
+		{2F9DEE8C-C04E-465B-97DB-0AB9B0539447}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{2F9DEE8C-C04E-465B-97DB-0AB9B0539447}.Debug|Any CPU.Build.0 = Debug|x64
+		{2F9DEE8C-C04E-465B-97DB-0AB9B0539447}.Debug|Any CPU.Deploy.0 = Debug|x64
+		{2F9DEE8C-C04E-465B-97DB-0AB9B0539447}.Debug|x86.ActiveCfg = Debug|x86
+		{2F9DEE8C-C04E-465B-97DB-0AB9B0539447}.Debug|x86.Build.0 = Debug|x86
+		{2F9DEE8C-C04E-465B-97DB-0AB9B0539447}.Debug|x86.Deploy.0 = Debug|x86
+		{2F9DEE8C-C04E-465B-97DB-0AB9B0539447}.Release|Any CPU.ActiveCfg = Release|x64
+		{2F9DEE8C-C04E-465B-97DB-0AB9B0539447}.Release|Any CPU.Build.0 = Release|x64
+		{2F9DEE8C-C04E-465B-97DB-0AB9B0539447}.Release|Any CPU.Deploy.0 = Release|x64
+		{2F9DEE8C-C04E-465B-97DB-0AB9B0539447}.Release|x86.ActiveCfg = Release|x86
+		{2F9DEE8C-C04E-465B-97DB-0AB9B0539447}.Release|x86.Build.0 = Release|x86
+		{2F9DEE8C-C04E-465B-97DB-0AB9B0539447}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
